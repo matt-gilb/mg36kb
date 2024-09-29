@@ -1,3 +1,9 @@
 [submodule "kicad/components/scottokeebs"]
 	path = kicad/components/scottokeebs
 	url = https://github.com/joe-scotto/scottokeebs.git
+[submodule "kicad/components/nice-nano-kicad"]
+	path = kicad/components/nice-nano-kicad
+	url = https://github.com/bstiq/nice-nano-kicad.git
+[submodule "kicad/components/nice_view_pcb"]
+	path = kicad/components/nice_view_pcb
+	url = https://github.com/HookyQR/nice_view_pcb.git
