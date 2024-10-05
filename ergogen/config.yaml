@@ -1,0 +1,110 @@
+meta:
+  engine: 4.1.0
+  version: 1.0
+  author: Matt Gilbert
+  name: mg36kb
+units:
+  # Spacing variables
+  $default_width: cx
+  $default_height: cy
+  kx: cx
+  ky: cy
+  # outline padding
+  px: kx+1
+  py: ky+1
+points:
+  zones:
+    matrix:
+      key:
+        padding: ky
+        spread: kx
+      columns:
+        pinky:
+        ring:
+          key:
+            stagger: ky
+        middle:
+          key:
+            stagger: .5ky
+        index:
+          key:
+            stagger: -.66ky
+        inner:
+          key:
+            stagger: -.15ky
+      rows:
+        bottom:
+        home:
+        top:
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-.25kx, -1.5ky]
+      key:
+        padding: ky
+        spread: kx
+      columns:
+        tuck:
+        home:
+          key:
+            width: 1.5kx
+            rotate: 90
+            splay: -20
+            shift: [4, 2.5]
+        stretch:
+          key:
+            width: 1.5kx
+            rotate: 90
+            splay: -25
+            shift: [9, 1.5]
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [kx, ky]
+pcbs:
+  fingers:
+    outlines:
+      main:
+        outline: raw
+    footprints:
+      chocs:
+        what: choc
+        where: true
+        params:
+          keycaps: true
+          reverse: false
+          hotswap: false
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+        adjust:
+          rotate: 180
+      diodes:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [9, -7]
+          rotate: 90
+      promicro:
+        what: ceoloide/mcu_nice_nano
+        where:
+          ref: matrix_inner_top
+          shift: [1.5kx,-.75ky]
+          rotate: 0
+      leds:
+        what: ceoloide/led_sk6812mini-e
+        where: true
+        params:
+          P2: "P2"
+          P4: "P4"
+        adjust:
+          shift: [0, 4.5]
+      display:
+        what: ceoloide/display_nice_view
+        where:
+          ref: matrix_inner_top
+          shift: [1.5kx,-ky]
+          rotate: 0
