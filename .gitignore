@@ -4,6 +4,9 @@
 # MacOS files
 .DS_Store
 
+# Afinity temp files
+*.afdesign~lock*
+
 # Temporary files
 *.000
 *.bak
